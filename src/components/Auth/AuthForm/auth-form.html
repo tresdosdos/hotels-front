@@ -1,0 +1,21 @@
+<section class="h-auth-form">
+  <h2 class="h-auth-title">{{name}} to Hotels.com</h2>
+  <form>
+    <v-text-field
+            required
+            v-model="email"
+            :error-messages="emailErrors"
+            label="Email"
+            @blur="$v.email.$touch()"
+    ></v-text-field>
+    <v-text-field
+            required
+            type="password"
+            v-model="password"
+            :error-messages="passwordErrors"
+            label="Password"
+            @blur="$v.password.$touch()"
+    ></v-text-field>
+    <v-btn @click="submit" color="info">{{name}}</v-btn>
+  </form>
+</section>
