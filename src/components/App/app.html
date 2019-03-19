@@ -49,6 +49,28 @@
                         </v-list-tile>
                     </router-link>
                 </template>
+                <template v-else>
+                    <router-link to="/reset">
+                        <v-list-tile>
+                            <v-list-tile-action>
+                                <v-icon>{{icons.changePassword}}</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title class="h-drawer-title">Change password</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </router-link>
+                    <router-link to="/log-out">
+                        <v-list-tile>
+                            <v-list-tile-action>
+                                <v-icon>{{icons.logOut}}</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title class="h-drawer-title">Log out</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </router-link>
+                </template>
             </v-list>
         </v-navigation-drawer>
         <v-content>

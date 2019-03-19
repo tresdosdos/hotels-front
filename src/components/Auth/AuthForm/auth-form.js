@@ -1,5 +1,7 @@
 import { validationMixin } from 'vuelidate';
 import { required, minLength, email } from 'vuelidate/lib/validators';
+import { ICONS } from '../../../icons';
+import { environment } from '../../../../env';
 
 export default {
     name: 'AuthForm',
@@ -12,6 +14,10 @@ export default {
     data: () => ({
         email: '',
         password: '',
+        icons: ICONS,
+        googleUrl: `${environment.baseUrl}/user/google`,
+        githubUrl: `${environment.baseUrl}/user/github`,
+        linkedinUrl: `${environment.baseUrl}/user/linkedin`,
     }),
     computed: {
         emailErrors() {

@@ -5,6 +5,7 @@ import store from './store';
 import Vuetify from 'vuetify/lib';
 import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css';
+import './css/reset.scss';
 
 import uiComponents from './ui-components';
 

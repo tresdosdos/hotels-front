@@ -6,6 +6,7 @@
             v-model="email"
             :error-messages="emailErrors"
             label="Email"
+            @keydown.enter="submit"
             @blur="$v.email.$touch()"
     ></v-text-field>
     <v-text-field
@@ -14,8 +15,20 @@
             v-model="password"
             :error-messages="passwordErrors"
             label="Password"
+            @keydown.enter="submit"
             @blur="$v.password.$touch()"
     ></v-text-field>
     <v-btn @click="submit" color="info">{{name}}</v-btn>
+    <div class="h-3rd-auth">
+      <a :href="googleUrl" class="h-redirect-auth">
+        <v-icon>{{icons.google}}</v-icon>
+      </a>
+      <a :href="githubUrl" class="h-redirect-auth">
+        <v-icon>{{icons.github}}</v-icon>
+      </a>
+      <a :href="linkedinUrl" class="h-redirect-auth">
+        <v-icon>{{icons.linkedin}}</v-icon>
+      </a>
+    </div>
   </form>
 </section>

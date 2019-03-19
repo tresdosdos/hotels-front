@@ -13,8 +13,13 @@ const activateAccount = function() {
     return HttpService.put(`${environment.baseUrl}/user/activate`);
 };
 
+const resetPassword = function(password) {
+    return HttpService.put(`${environment.baseUrl}/user`, { password });
+};
+
 export const authService = {
     signIn,
     signUp,
     activateAccount,
+    resetPassword,
 };

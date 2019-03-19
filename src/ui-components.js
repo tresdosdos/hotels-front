@@ -22,6 +22,7 @@ import {
     VTextField,
     VSnackbar,
     VProgressCircular,
+    VDivider,
 } from 'vuetify/lib';
 
 export default {
@@ -48,4 +49,5 @@ export default {
     VTextField,
     VSnackbar,
     VProgressCircular,
+    VDivider,
 };

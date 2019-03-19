@@ -1,0 +1,21 @@
+<section class="h-reset-password">
+    <form>
+        <v-text-field
+                required
+                type="password"
+                v-model="password"
+                :error-messages="passwordErrors"
+                label="Password"
+                @blur="$v.password.$touch()"
+        ></v-text-field>
+        <v-text-field
+                required
+                type="password"
+                v-model="confPassword"
+                :error-messages="confPasswordErrors"
+                label="Confirm password"
+                @blur="$v.confPassword.$touch()"
+        ></v-text-field>
+        <v-btn @click="submit" color="info">reset</v-btn>
+    </form>
+</section>

@@ -6,4 +6,17 @@
     font-size: 36px;
     margin-bottom: 20px;
   }
+
+  .h-3rd-auth {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+
+    .h-redirect-auth {
+      i {
+        color: $primary;
+        font-size: 28px;
+      }
+    }
+  }
 }
