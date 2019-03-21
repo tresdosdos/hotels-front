@@ -12,3 +12,9 @@ a {
   vertical-align:baseline;
   background:transparent;
 }
+
+.h-expand {
+  .v-expansion-panel__header {
+    padding: 0 10px 0 0;
+  }
+}

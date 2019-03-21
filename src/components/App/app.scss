@@ -12,4 +12,10 @@
   .h-header-title {
     color: #fff;
   }
+
+  .h-expand {
+    &-content {
+      margin-left: 10px;
+    }
+  }
 }

@@ -1,11 +1,9 @@
 import { mapState, mapGetters } from 'vuex';
 import { ICONS } from '../../icons';
 import Spinner from '../Spinner';
+import Avatar from '../User/Avatar';
 import logo from '../../assets/logo.png';
-import {
-    SNACKBAR_COLORS,
-    SNACKBAR_TIMEOUT,
-} from '../../store/modules/snackbar/snackbar-options';
+import { SNACKBAR_TIMEOUT } from '../../store/modules/snackbar/snackbar-options';
 import { HttpService } from '../../services/http';
 import { userService } from '../../services/user.service';
 
@@ -19,18 +17,11 @@ export default {
         }
 
         try {
-            this.$store.dispatch('spinner/start');
-
             const res = await userService.getByToken();
 
             this.$store.dispatch('user/setData', res.data);
-            this.$store.dispatch('spinner/stop');
         } catch (err) {
-            this.$store.dispatch('spinner/stop');
-            this.$store.dispatch('snackbar/show', {
-                message: err.message,
-                color: SNACKBAR_COLORS.error,
-            });
+            this.$store.dispatch('user/setData', {});
         }
     },
     computed: {
@@ -45,6 +36,7 @@ export default {
         }),
         ...mapGetters('user', {
             isAuthorized: 'isAuthorized',
+            firstLetter: 'firstLetter',
         }),
     },
     data: () => ({
@@ -56,5 +48,5 @@ export default {
     props: {
         source: String,
     },
-    components: { Spinner },
+    components: { Spinner, Avatar },
 };

@@ -7,4 +7,8 @@ export const ICONS = {
     google: 'mdi-google',
     linkedin: 'mdi-linkedin-box',
     logOut: 'mdi-logout',
+    user: 'mdi-account',
+    image: 'mdi-image',
+    account_edit: 'mdi-account-edit',
+    profile: 'mdi-face-profile',
 };

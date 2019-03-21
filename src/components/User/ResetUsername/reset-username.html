@@ -1,0 +1,18 @@
+<section class="h-reset-username">
+    <div class="h-reset-username-container">
+        <h2>Current username:</h2>
+        <h3>{{userName || 'No username yet'}}</h3>
+    </div>
+    <form>
+        <v-text-field
+                required
+                type="text"
+                v-model="username"
+                :error-messages="usernameErrors"
+                label="Username"
+                @blur="$v.username.$touch()"
+        ></v-text-field>
+        <v-btn @click="submit" color="info">Change username</v-btn>
+        <v-btn @click="deleteName" color="info">Delete username</v-btn>
+    </form>
+</section>

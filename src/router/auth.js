@@ -10,6 +10,17 @@ export const authRoutes = [
         component: () => import('../components/Auth/SignUp'),
     },
     {
+        path: '/forgot-password',
+        name: 'Forgot password',
+        component: () => import('../components/Auth/ForgotPassword'),
+    },
+    {
+        path: '/reset-password/:token?',
+        name: 'Reset password',
+        component: () => import('../components/Auth/ResetPassword'),
+        props: true,
+    },
+    {
         path: '/log-out',
         name: 'Log out',
         component: () => import('../components/Auth/LogOut'),

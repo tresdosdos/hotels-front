@@ -3,6 +3,7 @@
   <form>
     <v-text-field
             required
+            type="email"
             v-model="email"
             :error-messages="emailErrors"
             label="Email"
@@ -29,6 +30,9 @@
       <a :href="linkedinUrl" class="h-redirect-auth">
         <v-icon>{{icons.linkedin}}</v-icon>
       </a>
+    </div>
+    <div class="h-forgot-password-link">
+      <router-link to="/forgot-password">Forgot password?</router-link>
     </div>
   </form>
 </section>

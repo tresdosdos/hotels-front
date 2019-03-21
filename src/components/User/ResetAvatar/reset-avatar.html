@@ -1,0 +1,14 @@
+<section class="h-reset-avatar">
+    <h2>Upload your avatar</h2>
+    <picture-input
+            @change="uploadAvatar"
+            @remove="deleteAvatar"
+            ref="pictureInput"
+            :prefill="avatar"
+            size="5"
+            :removable="true"
+            buttonClass="v-btn theme--light info"
+            removeButtonClass="v-btn theme--light error"
+            :zIndex="1"
+    ></picture-input>
+</section>

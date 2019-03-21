@@ -23,6 +23,10 @@ import {
     VSnackbar,
     VProgressCircular,
     VDivider,
+    VExpansionPanel,
+    VExpansionPanelContent,
+    VCard,
+    VAvatar,
 } from 'vuetify/lib';
 
 export default {
@@ -50,4 +54,8 @@ export default {
     VSnackbar,
     VProgressCircular,
     VDivider,
+    VExpansionPanel,
+    VExpansionPanelContent,
+    VCard,
+    VAvatar,
 };

@@ -1,0 +1,13 @@
+<v-avatar
+        :size="size"
+        color="red"
+        v-if="isAuthorized"
+        class="h-avatar"
+>
+    <template v-if="avatar">
+        <img :src="avatar" alt="avatar">
+    </template>
+    <template v-else>
+        <span class="white--text headline">{{firstLetter}}</span>
+    </template>
+</v-avatar>
