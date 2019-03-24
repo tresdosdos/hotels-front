@@ -15,8 +15,8 @@ const uploadAvatar = function(inputFile) {
     });
 };
 
-const deleteAvatar = function() {
-    return HttpService.post(`${environment.baseUrl}/user/avatar`, undefined);
+const deleteAvatar = function(id) {
+    return HttpService.post(`${environment.baseUrl}/user/avatar`, { id });
 };
 
 export const userService = {

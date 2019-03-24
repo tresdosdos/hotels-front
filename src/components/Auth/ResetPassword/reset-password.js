@@ -5,16 +5,17 @@ import { HttpService } from '../../../services/http';
 
 export default {
     name: 'ResetPassword',
+    props: {
+        token: {
+            type: String,
+            required: false,
+        },
+    },
     mixins: [validationMixin],
-    props: ['token'],
     validations: {
         password: { required, minLength: minLength(8) },
         confPassword: { required },
     },
-    data: () => ({
-        password: '',
-        confPassword: '',
-    }),
     mounted() {
         if (this.token) {
             HttpService.setToken(this.token);
@@ -49,6 +50,10 @@ export default {
             return errors;
         },
     },
+    data: () => ({
+        password: '',
+        confPassword: '',
+    }),
     methods: {
         async submit() {
             this.$v.$touch();

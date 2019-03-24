@@ -9,6 +9,14 @@ import { userService } from '../../services/user.service';
 
 export default {
     name: 'App',
+    props: {
+        source: String,
+        required: true,
+    },
+    components: {
+        'h-spinner': Spinner,
+        'h-avatar': Avatar,
+    },
     async mounted() {
         const token = HttpService.getToken();
 
@@ -40,13 +48,9 @@ export default {
         }),
     },
     data: () => ({
+        timeout: SNACKBAR_TIMEOUT,
         drawer: null,
         icons: ICONS,
         logo,
-        timeout: SNACKBAR_TIMEOUT,
     }),
-    props: {
-        source: String,
-    },
-    components: { Spinner, Avatar },
 };

@@ -4,6 +4,7 @@ import router from '../router';
 import { SNACKBAR_COLORS } from '../store/modules/snackbar/snackbar-options';
 
 export class HttpService {
+    static source = axios.CancelToken.source();
     static token = localStorage.getItem('access_token');
 
     static getToken() {
@@ -57,8 +58,8 @@ export class HttpService {
 
     static makeRequest(config) {
         store.dispatch('spinner/start');
-        const source = axios.CancelToken.source();
-        const cancelToken = source.token;
+
+        const cancelToken = this.source.token;
         const token = HttpService.getToken();
 
         if (token) {
@@ -71,7 +72,10 @@ export class HttpService {
             .request({ ...config, cancelToken })
             .then(res => {
                 store.dispatch('spinner/stop');
-                HttpService.setToken(res.headers.authorization);
+
+                if (res.headers.authorization) {
+                    HttpService.setToken(res.headers.authorization);
+                }
 
                 return res;
             })
@@ -86,6 +90,7 @@ export class HttpService {
 
                 if (response && response.status === 401) {
                     this.removeToken();
+                    store.dispatch('user/setData', {});
                     router.push('/sign-in');
 
                     throw response.data;

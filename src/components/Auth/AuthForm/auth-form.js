@@ -5,20 +5,18 @@ import { environment } from '../../../../env';
 
 export default {
     name: 'AuthForm',
-    props: ['name'],
+    props: {
+        name: {
+            type: String,
+            required: true,
+            validator: value => ['Sign in', 'Sign up'].indexOf(value) !== -1,
+        },
+    },
     mixins: [validationMixin],
     validations: {
         email: { required, email },
         password: { required, minLength: minLength(8) },
     },
-    data: () => ({
-        email: '',
-        password: '',
-        icons: ICONS,
-        googleUrl: `${environment.baseUrl}/user/google`,
-        githubUrl: `${environment.baseUrl}/user/github`,
-        linkedinUrl: `${environment.baseUrl}/user/linkedin`,
-    }),
     computed: {
         emailErrors() {
             const errors = [];
@@ -46,6 +44,14 @@ export default {
             return errors;
         },
     },
+    data: () => ({
+        email: '',
+        password: '',
+        icons: ICONS,
+        googleUrl: `${environment.baseUrl}/user/google`,
+        githubUrl: `${environment.baseUrl}/user/github`,
+        linkedinUrl: `${environment.baseUrl}/user/linkedin`,
+    }),
     methods: {
         submit() {
             this.$v.$touch();

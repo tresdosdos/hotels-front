@@ -2,8 +2,13 @@ import { HttpService } from '../../../services/http';
 import { userService } from '../../../services/user.service';
 
 export default {
-    name: 'Activate',
-    props: ['token'],
+    name: 'Callback',
+    props: {
+        token: {
+            type: String,
+            required: true,
+        },
+    },
     async mounted() {
         if (!this.token) {
             return;

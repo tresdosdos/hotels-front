@@ -3,7 +3,9 @@ import { authService } from '../../../services/auth.service';
 
 export default {
     name: 'SignIn',
-    components: { AuthForm },
+    components: {
+        'h-auth-form': AuthForm,
+    },
     computed: {
         routeName() {
             return this.$route.name;

@@ -9,8 +9,12 @@ const signUp = function(user) {
     return HttpService.post(`${environment.baseUrl}/user/signUp`, user);
 };
 
-const activateAccount = function() {
-    return HttpService.put(`${environment.baseUrl}/user/activate`);
+const activateAccount = function(token) {
+    return HttpService.put(`${environment.baseUrl}/user/activate`, null, {
+        headers: {
+            Authorization: token,
+        },
+    });
 };
 
 const update = function(user) {

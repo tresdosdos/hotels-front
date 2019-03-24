@@ -4,7 +4,9 @@ import { SNACKBAR_COLORS } from '../../../store/modules/snackbar/snackbar-option
 
 export default {
     name: 'SignUp',
-    components: { AuthForm },
+    components: {
+        'h-auth-form': AuthForm,
+    },
     computed: {
         routeName() {
             return this.$route.name;

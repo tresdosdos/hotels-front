@@ -9,9 +9,6 @@ export default {
     validations: {
         email: { required, email },
     },
-    data: () => ({
-        email: '',
-    }),
     computed: {
         emailErrors() {
             const errors = [];
@@ -26,6 +23,9 @@ export default {
             return errors;
         },
     },
+    data: () => ({
+        email: '',
+    }),
     methods: {
         async submit() {
             this.$v.$touch();

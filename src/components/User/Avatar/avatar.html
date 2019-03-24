@@ -2,10 +2,11 @@
         :size="size"
         color="red"
         v-if="isAuthorized"
+        key="authorizedAvatar"
         class="h-avatar"
 >
     <template v-if="avatar">
-        <img :src="avatar" alt="avatar">
+        <img :src="quality === 'full' ? avatar : avatarHD" alt="avatar"/>
     </template>
     <template v-else>
         <span class="white--text headline">{{firstLetter}}</span>

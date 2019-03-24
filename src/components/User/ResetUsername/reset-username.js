@@ -9,9 +9,6 @@ export default {
     validations: {
         username: { required },
     },
-    data: () => ({
-        username: '',
-    }),
     computed: {
         ...mapState({
             userName: state => state.user.data.username,
@@ -28,6 +25,9 @@ export default {
             return errors;
         },
     },
+    data: () => ({
+        username: '',
+    }),
     methods: {
         async submit() {
             this.$v.$touch();

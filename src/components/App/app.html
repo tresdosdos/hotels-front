@@ -1,4 +1,4 @@
-<main id="app" class="h-app">
+<main id="app" class="h-app" xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <v-app id="inspire">
         <v-toolbar
                 :color="$vuetify.theme.primary"
@@ -9,14 +9,14 @@
             <v-toolbar-side-icon dark @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title class="h-header-title">{{currentRouteName}}</v-toolbar-title>
             <v-spacer></v-spacer>
-            <Avatar size="40"/>
+            <h-avatar size="40" quality="hd"></h-avatar>
         </v-toolbar>
         <v-navigation-drawer
                 v-model="drawer"
                 fixed
                 app
         >
-            <v-img :src="logo" aspect-ratio="1"/>
+            <v-img :src="logo" aspect-ratio="1"></v-img>
             <v-list>
                 <router-link to="/home">
                     <v-list-tile>
@@ -124,7 +124,7 @@
             <v-container fluid fill-height>
                 <v-layout justify-center align-center>
                     <v-flex shrink>
-                        <router-view/>
+                        <router-view></router-view>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -149,5 +149,5 @@
             Close
         </v-btn>
     </v-snackbar>
-    <Spinner v-if="isSpinnerActive"/>
+    <h-spinner v-if="isSpinnerActive" key="spinnerActive"></h-spinner>
 </main>

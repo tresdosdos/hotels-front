@@ -1,13 +1,16 @@
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import PictureInput from 'vue-picture-input';
 import { userService } from '../../../services/user.service';
 
 export default {
     name: 'ResetAvatar',
-    components: { PictureInput },
+    components: {
+        'picture-input': PictureInput,
+    },
     computed: {
-        ...mapState({
-            avatar: state => state.user.data.avatar,
+        ...mapGetters('user', {
+            avatar: 'avatar',
+            avatarId: 'avatarId',
         }),
     },
     methods: {
@@ -19,7 +22,7 @@ export default {
             this.$store.dispatch('user/setData', res.data);
         },
         async deleteAvatar() {
-            const res = await userService.deleteAvatar();
+            const res = await userService.deleteAvatar(this.avatarId);
 
             this.$store.dispatch('user/setData', res.data);
         },

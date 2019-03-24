@@ -1,15 +1,24 @@
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'Avatar',
-    props: ['size'],
+    props: {
+        size: {
+            type: String,
+            required: true,
+        },
+        quality: {
+            type: String,
+            required: true,
+            validator: value => ['full', 'hd'].indexOf(value) !== -1,
+        },
+    },
     computed: {
         ...mapGetters('user', {
             isAuthorized: 'isAuthorized',
             firstLetter: 'firstLetter',
-        }),
-        ...mapState({
-            avatar: state => state.user.data.avatar,
+            avatar: 'avatar',
+            avatarHD: 'avatarHD',
         }),
     },
 };
