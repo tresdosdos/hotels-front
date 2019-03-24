@@ -3,17 +3,21 @@
         <h-avatar size="300" quality="full"></h-avatar>
     </div>
     <div>
-        <div>
+        <div class="h-profile-item">
             <h2>Username:</h2>
-            <h3>{{user.username}}</h3>
+            <h3>{{user.username || "Didn't set yet"}}</h3>
         </div>
-        <div>
+        <div class="h-profile-item">
             <h2>Email:</h2>
             <h3>{{user.email}}</h3>
         </div>
-        <div>
+        <div class="h-profile-item">
             <h2>Account was created at:</h2>
-            <h3>{{user.createdAt}}</h3>
+            <h3>{{createdAt}}</h3>
+        </div>
+        <div class="h-profile-item">
+            <h2>Last login from:</h2>
+            <h3>{{lastSystem || 'Local'}}</h3>
         </div>
     </div>
 </section>
