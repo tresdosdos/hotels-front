@@ -1,0 +1,31 @@
+<section class="h-add-hotel">
+    <form>
+        <v-text-field
+                required
+                v-model="name"
+                :error-messages="nameErrors"
+                label="Name"
+                @keydown.enter="submit"
+                @blur="$v.name.$touch()"
+        ></v-text-field>
+        <v-text-field
+                required
+                type="address"
+                v-model="city"
+                :error-messages="cityErrors"
+                label="City"
+                @keydown.enter="submit"
+                @blur="$v.city.$touch()"
+        ></v-text-field>
+        <v-text-field
+                required
+                type="address"
+                v-model="address"
+                :error-messages="addressErrors"
+                label="Address"
+                @keydown.enter="submit"
+                @blur="$v.address.$touch()"
+        ></v-text-field>
+        <v-btn @click="submit" color="info">Create hotel</v-btn>
+    </form>
+</section>

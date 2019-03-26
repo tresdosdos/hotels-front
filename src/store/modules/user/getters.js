@@ -15,6 +15,9 @@ export default {
 
         return state.data.email && state.data.email[0].toUpperCase();
     },
+    userId(state) {
+        return _.get(state, 'data.id');
+    },
     avatar(state) {
         return _.get(state, 'data.avatar.url');
     },

@@ -1,0 +1,26 @@
+<v-card class="h-hotel">
+    <v-carousel hide-delimiters class="h-hotel-images" v-if="hotel.images.length" key="images-carousel">
+        <v-carousel-item
+                v-for="image in hotel.images"
+                :key="image.id"
+                :src="image.url"
+        ></v-carousel-item>
+    </v-carousel>
+    <div class="h-card-image" v-else key="hotel-no-images">
+        <v-icon>{{icons.question}}</v-icon>
+    </div>
+
+    <v-card-title primary-title class="h-card-title">
+        <div>
+            <h3 class="headline mb-0">{{hotel.name}}</h3>
+        </div>
+    </v-card-title>
+
+    <v-layout justify-center align-center>
+        <v-card-actions class="h-card-actions">
+            <v-btn flat class="info">View</v-btn>
+            <v-btn flat class="error">Delete</v-btn>
+        </v-card-actions>
+    </v-layout>
+</v-card>
+

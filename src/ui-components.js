@@ -26,7 +26,11 @@ import {
     VExpansionPanel,
     VExpansionPanelContent,
     VCard,
+    VCardTitle,
+    VCardActions,
     VAvatar,
+    VCarousel,
+    VCarouselItem,
 } from 'vuetify/lib';
 
 export default {
@@ -57,5 +61,9 @@ export default {
     VExpansionPanel,
     VExpansionPanelContent,
     VCard,
+    VCardTitle,
+    VCardActions,
     VAvatar,
+    VCarousel,
+    VCarouselItem,
 };

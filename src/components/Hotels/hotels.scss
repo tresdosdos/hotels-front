@@ -1,0 +1,12 @@
+@import "../../css/colors";
+
+.h-hotels {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  * {
+    margin: 10px;
+  }
+}

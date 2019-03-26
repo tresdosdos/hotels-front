@@ -11,4 +11,7 @@ export const ICONS = {
     image: 'mdi-image',
     account_edit: 'mdi-account-edit',
     profile: 'mdi-face-profile',
+    hotel: 'mdi-hotel',
+    add: 'mdi-plus',
+    question: 'mdi-help',
 };

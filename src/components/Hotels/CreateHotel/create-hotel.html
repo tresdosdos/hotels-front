@@ -1,0 +1,21 @@
+<v-card class="h-hotel">
+    <div class="h-card-image">
+        <v-icon>{{icons.add}}</v-icon>
+    </div>
+
+    <v-card-title primary-title class="h-card-title">
+        <div>
+            <h3 class="headline mb-0">Add your own hotel</h3>
+        </div>
+    </v-card-title>
+
+    <v-layout justify-center align-center>
+        <v-card-actions class="h-card-actions">
+            <router-link to="/hotel/add">
+                <v-btn flat class="h-hotel-button">
+                    Create
+                </v-btn>
+            </router-link>
+        </v-card-actions>
+    </v-layout>
+</v-card>
