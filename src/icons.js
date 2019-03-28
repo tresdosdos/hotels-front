@@ -9,7 +9,7 @@ export const ICONS = {
     logOut: 'mdi-logout',
     user: 'mdi-account',
     image: 'mdi-image',
-    account_edit: 'mdi-account-edit',
+    accountEdit: 'mdi-account-edit',
     profile: 'mdi-face-profile',
     hotel: 'mdi-hotel',
     add: 'mdi-plus',

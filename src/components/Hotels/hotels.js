@@ -1,7 +1,6 @@
 import { mapGetters, mapState } from 'vuex';
 import CreateHotel from './CreateHotel';
 import Hotel from './Hotel';
-import { hotelService } from '../../services/hotel.service';
 import { hotelActions } from '../../store/modules/hotel/constants';
 
 export default {
@@ -19,12 +18,9 @@ export default {
         }),
     },
     async mounted() {
-        const res = await hotelService.getUserHotels(this.userId);
-
-        if (!res.data) {
-            return;
-        }
-
-        this.$store.dispatch(`hotel/${hotelActions.SET_USER_HOTELS}`, res.data);
+        this.$store.dispatch(
+            `hotel/${hotelActions.GET_USER_HOTELS}`,
+            this.userId
+        );
     },
 };

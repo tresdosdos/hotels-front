@@ -2,6 +2,7 @@ import { validationMixin } from 'vuelidate';
 import { email, required } from 'vuelidate/lib/validators';
 import { authService } from '../../../services/auth.service';
 import { SNACKBAR_COLORS } from '../../../store/modules/snackbar/snackbar-options';
+import { snackbarActions } from '../../../store/modules/snackbar/constants';
 
 export default {
     name: 'ForgotPassword',
@@ -37,7 +38,7 @@ export default {
             try {
                 const res = await authService.sendResetEmail(this.email);
 
-                this.$store.dispatch('snackbar/show', {
+                this.$store.dispatch(`snackbar/${snackbarActions.SHOW}`, {
                     message: res.data.message,
                     color: SNACKBAR_COLORS.info,
                 });

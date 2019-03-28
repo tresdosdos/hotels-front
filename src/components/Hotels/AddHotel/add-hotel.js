@@ -1,6 +1,6 @@
 import { validationMixin } from 'vuelidate';
 import { minLength, required } from 'vuelidate/lib/validators';
-import { hotelService } from '../../../services/hotel.service';
+import { hotelActions } from '../../../store/modules/hotel/constants';
 
 export default {
     name: 'AddHotel',
@@ -64,14 +64,10 @@ export default {
                 return;
             }
 
-            await hotelService.createHotel({
+            await this.$store.dispatch(`hotel/${hotelActions.CREATE_HOTEL}`, {
                 name: this.name,
                 address: this.address,
                 city: this.city,
-            });
-            this.$store.dispatch('snackbar', {
-                color: 'success',
-                message: 'Your hotel was successfully created',
             });
             this.$router.push('/hotels');
         },

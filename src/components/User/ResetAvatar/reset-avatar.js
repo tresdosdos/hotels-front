@@ -1,6 +1,6 @@
 import { mapGetters } from 'vuex';
 import PictureInput from 'vue-picture-input';
-import { userService } from '../../../services/user.service';
+import { userActions } from '../../../store/modules/user/constants';
 
 export default {
     name: 'ResetAvatar',
@@ -10,21 +10,17 @@ export default {
     computed: {
         ...mapGetters('user', {
             avatar: 'avatar',
-            avatarId: 'avatarId',
         }),
     },
     methods: {
         async uploadAvatar() {
-            const res = await userService.uploadAvatar(
+            this.$store.dispatch(
+                `user/${userActions.UPLOAD_AVATAR}`,
                 this.$refs.pictureInput.file
             );
-
-            this.$store.dispatch('user/setData', res.data);
         },
         async deleteAvatar() {
-            const res = await userService.deleteAvatar(this.avatarId);
-
-            this.$store.dispatch('user/setData', res.data);
+            this.$store.dispatch(`user/${userActions.DELETE_AVATAR}`);
         },
     },
 };

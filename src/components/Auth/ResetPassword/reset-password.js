@@ -1,7 +1,9 @@
 import { validationMixin } from 'vuelidate';
 import { minLength, required } from 'vuelidate/lib/validators';
-import { authService } from '../../../services/auth.service';
 import { HttpService } from '../../../services/http';
+import { userActions } from '../../../store/modules/user/constants';
+import { snackbarActions } from '../../../store/modules/snackbar/constants';
+import { SNACKBAR_COLORS } from '../../../store/modules/snackbar/snackbar-options';
 
 export default {
     name: 'ResetPassword',
@@ -63,14 +65,15 @@ export default {
             }
 
             try {
-                const res = await authService.update({
+                await this.$store.dispatch(`user/${userActions.UPDATE}`, {
                     password: this.password,
                 });
-
-                this.$store.dispatch('user/setData', res.data);
                 this.$router.push('/');
             } catch (err) {
-                this.$store.dispatch('user/setData', {});
+                this.$store.dispatch(`snackbar/${snackbarActions.SHOW}`, {
+                    color: SNACKBAR_COLORS.error,
+                    message: err.message,
+                });
             }
         },
     },

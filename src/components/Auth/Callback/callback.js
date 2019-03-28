@@ -1,5 +1,5 @@
 import { HttpService } from '../../../services/http';
-import { userService } from '../../../services/user.service';
+import { userActions } from '../../../store/modules/user/constants';
 
 export default {
     name: 'Callback',
@@ -16,12 +16,10 @@ export default {
 
         HttpService.setToken(this.token);
         try {
-            const res = await userService.getByToken();
-
-            this.$store.dispatch('user/setData', res.data);
+            this.$store.dispatch(`user/${userActions.GET_DATA}`);
             this.$router.push('/');
         } catch (err) {
-            this.$store.dispatch('user/setData', {});
+            this.$store.dispatch(`user/${userActions.SET_DATA}`, {});
         }
     },
 };

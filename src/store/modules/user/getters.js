@@ -24,7 +24,4 @@ export default {
     avatarHD(state) {
         return _.get(state, 'data.avatar.shortUrl');
     },
-    avatarId(state) {
-        return _.get(state, 'data.avatar.id');
-    },
 };

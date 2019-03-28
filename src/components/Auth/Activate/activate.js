@@ -1,4 +1,4 @@
-import { authService } from '../../../services/auth.service';
+import { userActions } from '../../../store/modules/user/constants';
 
 export default {
     name: 'Activate',
@@ -13,13 +13,10 @@ export default {
             return;
         }
 
-        try {
-            const res = await authService.activateAccount(this.token);
-
-            this.$store.dispatch('user/setData', res.data);
-            this.$router.push('/');
-        } catch (err) {
-            this.$store.dispatch('user/setData', {});
-        }
+        this.$store.dispatch(
+            `user/${userActions.ACTIVATE_ACCOUNT}`,
+            this.token
+        );
+        this.$router.push('/');
     },
 };

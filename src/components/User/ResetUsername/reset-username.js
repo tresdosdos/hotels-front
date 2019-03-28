@@ -2,6 +2,7 @@ import { mapState } from 'vuex';
 import { validationMixin } from 'vuelidate';
 import { required } from 'vuelidate/lib/validators';
 import { authService } from '../../../services/auth.service';
+import { userActions } from '../../../store/modules/user/constants';
 
 export default {
     name: 'ResetUsername',
@@ -41,9 +42,9 @@ export default {
                     username: this.username,
                 });
 
-                this.$store.dispatch('user/setData', res.data);
+                this.$store.dispatch(`user/${userActions.SET_DATA}`, res.data);
             } catch (err) {
-                this.$store.dispatch('user/setData', {});
+                this.$store.dispatch(`user/${userActions.SET_DATA}`, {});
             }
         },
         async deleteName() {
@@ -56,9 +57,9 @@ export default {
                     username: null,
                 });
 
-                this.$store.dispatch('user/setData', res.data);
+                this.$store.dispatch(`user/${userActions.SET_DATA}`, res.data);
             } catch (err) {
-                this.$store.dispatch('user/setData', {});
+                this.$store.dispatch(`user/${userActions.SET_DATA}`, {});
             }
         },
     },

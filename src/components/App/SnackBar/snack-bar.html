@@ -1,0 +1,14 @@
+<v-snackbar
+        v-model="isBarActive"
+        :color="color"
+        :timeout="timeout"
+>
+    {{msg}}
+    <v-btn
+            dark
+            flat
+            @click="closeBar"
+    >
+        Close
+    </v-btn>
+</v-snackbar>

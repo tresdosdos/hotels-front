@@ -1,5 +1,5 @@
 import AuthForm from '../AuthForm';
-import { authService } from '../../../services/auth.service';
+import { userActions } from '../../../store/modules/user/constants';
 
 export default {
     name: 'SignIn',
@@ -13,14 +13,8 @@ export default {
     },
     methods: {
         async signIn(user) {
-            try {
-                const res = await authService.signIn(user);
-
-                this.$store.dispatch('user/setData', res.data);
-                this.$router.push('/');
-            } catch (err) {
-                this.$store.dispatch('user/setData', {});
-            }
+            await this.$store.dispatch(`user/${userActions.SIGN_IN}`, user);
+            this.$router.push('/');
         },
     },
 };

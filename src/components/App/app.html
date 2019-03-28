@@ -18,37 +18,22 @@
         >
             <v-img :src="logo" aspect-ratio="1"></v-img>
             <v-list>
-                <router-link to="/home">
-                    <v-list-tile>
-                        <v-list-tile-action>
-                            <v-icon>{{icons.home}}</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-content>
-                            <v-list-tile-title class="h-drawer-title">Home</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
-                </router-link>
+                <h-drawer-link
+                        path="/home"
+                        :icon="icons.home"
+                        name="Home"
+                ></h-drawer-link>
                 <template v-if="!isAuthorized">
-                    <router-link to="/sign-in">
-                        <v-list-tile>
-                            <v-list-tile-action>
-                                <v-icon>{{icons.signIn}}</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-content>
-                                <v-list-tile-title class="h-drawer-title">Sign in</v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                    </router-link>
-                    <router-link to="/sign-up">
-                        <v-list-tile>
-                            <v-list-tile-action>
-                                <v-icon>{{icons.signUp}}</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-content>
-                                <v-list-tile-title class="h-drawer-title">Sign up</v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                    </router-link>
+                    <h-drawer-link
+                            path="/sign-in"
+                            :icon="icons.signIn"
+                            name="Sign in"
+                    ></h-drawer-link>
+                    <h-drawer-link
+                            path="/sign-up"
+                            :icon="icons.signUp"
+                            name="Sign up"
+                    ></h-drawer-link>
                 </template>
                 <template v-else>
                     <v-expansion-panel class="h-expand">
@@ -64,69 +49,39 @@
                                 </v-list-tile>
                             </template>
                             <div class="h-expand-content">
-                                <router-link to="/profile">
-                                    <v-list-tile>
-                                        <v-list-tile-action>
-                                            <v-icon>{{icons.profile}}</v-icon>
-                                        </v-list-tile-action>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="h-drawer-title">Profile</v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
-                                </router-link>
-                                <router-link to="/reset-username">
-                                    <v-list-tile>
-                                        <v-list-tile-action>
-                                            <v-icon>{{icons.account_edit}}</v-icon>
-                                        </v-list-tile-action>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="h-drawer-title">Change username</v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
-                                </router-link>
-                                <router-link to="/reset-avatar">
-                                    <v-list-tile>
-                                        <v-list-tile-action>
-                                            <v-icon>{{icons.image}}</v-icon>
-                                        </v-list-tile-action>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="h-drawer-title">Change avatar</v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
-                                </router-link>
-                                <router-link to="/reset-password">
-                                    <v-list-tile>
-                                        <v-list-tile-action>
-                                            <v-icon>{{icons.changePassword}}</v-icon>
-                                        </v-list-tile-action>
-                                        <v-list-tile-content>
-                                            <v-list-tile-title class="h-drawer-title">Change password</v-list-tile-title>
-                                        </v-list-tile-content>
-                                    </v-list-tile>
-                                </router-link>
+                                <h-drawer-link
+                                        path="/profile"
+                                        :icon="icons.profile"
+                                        name="Profile"
+                                ></h-drawer-link>
+                                <h-drawer-link
+                                        path="/reset-username"
+                                        :icon="icons.accountEdit"
+                                        name="Change username"
+                                ></h-drawer-link>
+                                <h-drawer-link
+                                        path="/reset-avatar"
+                                        :icon="icons.image"
+                                        name="Change avatar"
+                                ></h-drawer-link>
+                                <h-drawer-link
+                                        path="/reset-password"
+                                        :icon="icons.changePassword"
+                                        name="Change password"
+                                ></h-drawer-link>
                             </div>
                         </v-expansion-panel-content>
                     </v-expansion-panel>
-                    <router-link to="/hotels">
-                        <v-list-tile>
-                            <v-list-tile-action>
-                                <v-icon>{{icons.hotel}}</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-content>
-                                <v-list-tile-title class="h-drawer-title">Hotels</v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                    </router-link>
-                    <router-link to="/log-out">
-                        <v-list-tile>
-                            <v-list-tile-action>
-                                <v-icon>{{icons.logOut}}</v-icon>
-                            </v-list-tile-action>
-                            <v-list-tile-content>
-                                <v-list-tile-title class="h-drawer-title">Log out</v-list-tile-title>
-                            </v-list-tile-content>
-                        </v-list-tile>
-                    </router-link>
+                    <h-drawer-link
+                            path="/hotels"
+                            :icon="icons.hotel"
+                            name="Hotels"
+                    ></h-drawer-link>
+                    <h-drawer-link
+                            path="/log-out"
+                            :icon="icons.logOut"
+                            name="Log out"
+                    ></h-drawer-link>
                 </template>
             </v-list>
         </v-navigation-drawer>
@@ -139,25 +94,8 @@
                 </v-layout>
             </v-container>
         </v-content>
-        <v-footer :color="$vuetify.theme.primary" class="h-header-title" app>
-            <span>Vitali Diachuk</span>
-            <v-spacer></v-spacer>
-            <span>&copy; 2019</span>
-        </v-footer>
+        <h-footer></h-footer>
     </v-app>
-    <v-snackbar
-            v-model="isBarActive"
-            :color="color"
-            :timeout="timeout"
-    >
-        {{msg}}
-        <v-btn
-                dark
-                flat
-                @click="$store.dispatch('snackbar/close')"
-        >
-            Close
-        </v-btn>
-    </v-snackbar>
+    <h-snackbar></h-snackbar>
     <h-spinner v-if="isSpinnerActive" key="spinnerActive"></h-spinner>
 </main>
