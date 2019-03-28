@@ -1,5 +1,7 @@
+import { spinnerMutations } from './constants';
+
 export default {
-    setActivity(state, isActive) {
+    [spinnerMutations.SET_ACTIVITY](state, isActive) {
         state.isActive = isActive;
     },
 };

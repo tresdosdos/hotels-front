@@ -1,4 +1,6 @@
-export const hotelRoutes = [
+import { UserGuard } from './guards/user.guard';
+
+export const routes = [
     {
         path: '/hotels',
         name: 'Hotels',
@@ -10,3 +12,9 @@ export const hotelRoutes = [
         component: () => import('../components/Hotels/AddHotel'),
     },
 ];
+
+export const hotelRoutes = routes.map(route => {
+    route.beforeEnter = UserGuard;
+
+    return route;
+});

@@ -4,8 +4,6 @@ import Spinner from '../Spinner';
 import Avatar from '../User/Avatar';
 import logo from '../../assets/logo.png';
 import { SNACKBAR_TIMEOUT } from '../../store/modules/snackbar/snackbar-options';
-import { HttpService } from '../../services/http';
-import { userService } from '../../services/user.service';
 
 export default {
     name: 'App',
@@ -16,21 +14,6 @@ export default {
     components: {
         'h-spinner': Spinner,
         'h-avatar': Avatar,
-    },
-    async mounted() {
-        const token = HttpService.getToken();
-
-        if (!token) {
-            return;
-        }
-
-        try {
-            const res = await userService.getByToken();
-
-            this.$store.dispatch('user/setData', res.data);
-        } catch (err) {
-            this.$store.dispatch('user/setData', {});
-        }
     },
     computed: {
         currentRouteName() {

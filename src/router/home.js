@@ -1,9 +1,16 @@
 import Home from '../components/Home';
+import { GuestGuard } from './guards/guest.guard';
 
-export const homeRoutes = [
+const routes = [
     {
         path: '/',
         name: 'Home',
         component: Home,
     },
 ];
+
+export const homeRoutes = routes.map(route => {
+    route.beforeEnter = GuestGuard;
+
+    return route;
+});

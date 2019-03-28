@@ -1,15 +1,16 @@
 import { SNACKBAR_TIMEOUT } from './snackbar-options';
+import { snackbarActions, snackbarMutations } from './constants';
 
 export default {
-    show({ commit }, { message, color }) {
-        commit('setMessage', message);
-        commit('setColor', color);
-        commit('setBarStatus', true);
+    [snackbarActions.SHOW]({ commit }, { message, color }) {
+        commit(snackbarMutations.SET_MESSAGE, message);
+        commit(snackbarMutations.SET_COLOR, color);
+        commit(snackbarMutations.SET_BAR_STATUS, true);
         setTimeout(() => {
-            commit('flushSnackBar');
+            commit(snackbarMutations.FLUSH_SNACKBAR);
         }, SNACKBAR_TIMEOUT);
     },
-    close({ commit }) {
-        commit('flushSnackBar');
+    [snackbarActions.CLOSE]({ commit }) {
+        commit(snackbarMutations.FLUSH_SNACKBAR);
     },
 };

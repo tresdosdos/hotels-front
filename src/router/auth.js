@@ -1,4 +1,6 @@
-export const authRoutes = [
+import { GuestGuard } from './guards/guest.guard';
+
+const routes = [
     {
         path: '/sign-in',
         name: 'Sign in',
@@ -38,3 +40,9 @@ export const authRoutes = [
         props: true,
     },
 ];
+
+export const authRoutes = routes.map(route => {
+    route.beforeEnter = GuestGuard;
+
+    return route;
+});

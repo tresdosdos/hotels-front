@@ -2,6 +2,9 @@ import axios from 'axios';
 import store from '../store';
 import router from '../router';
 import { SNACKBAR_COLORS } from '../store/modules/snackbar/snackbar-options';
+import { spinnerActions } from '../store/modules/spinner/constants';
+import { snackbarActions } from '../store/modules/snackbar/constants';
+import { userActions } from '../store/modules/user/constants';
 
 export class HttpService {
     static source = axios.CancelToken.source();
@@ -57,7 +60,7 @@ export class HttpService {
     }
 
     static makeRequest(config) {
-        store.dispatch('spinner/start');
+        store.dispatch(`spinner/${spinnerActions.START}`);
 
         const cancelToken = this.source.token;
         const token = HttpService.getToken();
@@ -71,7 +74,7 @@ export class HttpService {
         return axios
             .request({ ...config, cancelToken })
             .then(res => {
-                store.dispatch('spinner/stop');
+                store.dispatch(`spinner/${spinnerActions.STOP}`);
 
                 if (res.headers.authorization) {
                     HttpService.setToken(res.headers.authorization);
@@ -82,15 +85,15 @@ export class HttpService {
             .catch(e => {
                 const { response } = e;
 
-                store.dispatch('spinner/stop');
-                store.dispatch('snackbar/show', {
+                store.dispatch(`spinner/${spinnerActions.STOP}`);
+                store.dispatch(`snackbar/${snackbarActions.SHOW}`, {
                     message: response.data.message,
                     color: SNACKBAR_COLORS.error,
                 });
 
                 if (response && response.status === 401) {
                     this.removeToken();
-                    store.dispatch('user/setData', {});
+                    store.dispatch(`user/${userActions.SET_DATA}`, {});
                     router.push('/sign-in');
 
                     throw response.data;

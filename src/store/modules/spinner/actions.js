@@ -1,8 +1,10 @@
+import { spinnerActions, spinnerMutations } from './constants';
+
 export default {
-    start({ commit }) {
-        commit('setActivity', true);
+    [spinnerActions.START]({ commit }) {
+        commit(spinnerMutations.SET_ACTIVITY, true);
     },
-    stop({ commit }) {
-        commit('setActivity', false);
+    [spinnerActions.STOP]({ commit }) {
+        commit(spinnerMutations.SET_ACTIVITY, false);
     },
 };

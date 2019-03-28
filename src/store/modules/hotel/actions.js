@@ -1,5 +1,7 @@
+import { hotelActions, hotelMutations } from './constants';
+
 export default {
-    setUserHotels({ commit }, hotels) {
-        commit('setUserHotels', hotels);
+    [hotelActions.SET_USER_HOTELS]({ commit }, hotels) {
+        commit(hotelMutations.SET_USER_HOTELS, hotels);
     },
 };
