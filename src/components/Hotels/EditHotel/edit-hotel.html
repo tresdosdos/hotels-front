@@ -1,0 +1,34 @@
+<section class="h-edit-hotel">
+    <div class="h-hotel-title">
+        <h2>Hotel title</h2>
+        <div class="h-input-name">{{hotel.name}}</div>
+    </div>
+    <div class="h-hotel-title">
+        <h2>Hotel address</h2>
+        <div class="h-input-address">{{hotel.address}}</div>
+    </div>
+    <h-add-room :hotelId="hotel.id" @onRoomAddSuccess="onRoomAddSuccess"></h-add-room>
+    <div class="h-hotel-carousel">
+        <v-carousel hide-delimiters v-if="hotel.images.length" key="images-carousel" height="200px">
+            <v-carousel-item
+                    v-for="image in hotel.images"
+                    :key="image.id"
+                    :src="image.url"
+            ></v-carousel-item>
+        </v-carousel>
+        <picture-input
+                @change="uploadPhoto"
+                ref="pictureInput"
+                size="5"
+                :crop="true"
+                :removable="false"
+                :width="250"
+                :height="250"
+                buttonClass="v-btn theme--light info"
+                removeButtonClass="v-btn theme--light error"
+                :zIndex="1"
+        ></picture-input>
+    </div>
+    <h3>Hotel rooms:</h3>
+    <h-rooms :rooms="hotel.rooms"></h-rooms>
+</section>

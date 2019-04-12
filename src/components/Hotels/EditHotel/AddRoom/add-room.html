@@ -1,0 +1,58 @@
+<v-dialog v-model="dialog" max-width="600px">
+    <template v-slot:activator="{ on }">
+        <v-btn color="primary" dark v-on="on">Add room</v-btn>
+    </template>
+    <v-card>
+        <v-card-title>
+            <span class="headline">New room</span>
+        </v-card-title>
+        <v-card-text>
+            <v-text-field
+                    required
+                    min="1"
+                    type="number"
+                    v-model="number"
+                    :error-messages="numberErrors"
+                    label="Room number"
+                    @keydown.enter="submit"
+                    @blur="$v.number.$touch()"
+            ></v-text-field>
+            <v-text-field
+                    required
+                    min="1"
+                    type="number"
+                    v-model="floor"
+                    :error-messages="floorErrors"
+                    label="Room floor"
+                    @keydown.enter="submit"
+                    @blur="$v.floor.$touch()"
+            ></v-text-field>
+            <v-text-field
+                    required
+                    min="0"
+                    type="number"
+                    v-model="cost"
+                    :error-messages="costErrors"
+                    label="Cost"
+                    @keydown.enter="submit"
+                    @blur="$v.cost.$touch()"
+            ></v-text-field>
+            <v-text-field
+                    required
+                    min="1"
+                    max="9"
+                    type="number"
+                    v-model="numberOfPlaces"
+                    :error-messages="numberOfPlacesErrors"
+                    label="Number of places"
+                    @keydown.enter="submit"
+                    @blur="$v.numberOfPlaces.$touch()"
+            ></v-text-field>
+        </v-card-text>
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
+            <v-btn color="blue darken-1" flat @click="submit">Save</v-btn>
+        </v-card-actions>
+    </v-card>
+</v-dialog>

@@ -1,0 +1,8 @@
+<section class="h-rooms">
+    <template v-for="rms of orderedRooms">
+        <div v-if="rms && rms.length" class="h-floor">
+            Floor #{{rms[0].floor}}
+            <h-room v-for="rm of rms" :room="rm" :key="rm.id"></h-room>
+        </div>
+    </template>
+</section>

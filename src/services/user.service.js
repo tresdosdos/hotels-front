@@ -8,7 +8,7 @@ const getByToken = function() {
 const uploadAvatar = function(inputFile) {
     const file = new FormData();
     file.append('file', inputFile);
-    return HttpService.post(`${environment.baseUrl}/user/avatar`, file, {
+    return HttpService.post(`${environment.baseUrl}/hotel/avatar`, file, {
         headers: {
             'content-type': 'multipart/form-data',
         },

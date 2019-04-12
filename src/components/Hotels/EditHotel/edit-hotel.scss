@@ -1,0 +1,38 @@
+@import "../../../css/colors";
+
+.h-edit-hotel {
+  .h-hotel-title {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+
+    .h-input-name {
+      font-size: 28px;
+    }
+    .h-input-address {
+      font-size: 18px;
+    }
+  }
+
+  .h-hotel-carousel {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    min-width: 500px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .h-edit-hotel {
+    .h-hotel-carousel {
+      align-items: flex-start;
+      flex-direction: column;
+      min-width: 300px;
+
+      .v-carousel {
+        width: 320px !important;
+      }
+    }
+  }
+}

@@ -14,4 +14,5 @@ export const ICONS = {
     hotel: 'mdi-hotel',
     add: 'mdi-plus',
     question: 'mdi-help',
+    room: 'mdi-alpha-r-box',
 };

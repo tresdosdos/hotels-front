@@ -31,6 +31,9 @@ import {
     VAvatar,
     VCarousel,
     VCarouselItem,
+    VDialog,
+    VCardText,
+    VMenu,
 } from 'vuetify/lib';
 
 export default {
@@ -66,4 +69,7 @@ export default {
     VAvatar,
     VCarousel,
     VCarouselItem,
+    VDialog,
+    VCardText,
+    VMenu,
 };

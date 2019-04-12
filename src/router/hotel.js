@@ -11,6 +11,12 @@ export const routes = [
         name: 'Add hotel',
         component: () => import('../components/Hotels/AddHotel'),
     },
+    {
+        path: '/hotel/edit/:id',
+        name: 'Hotel',
+        component: () => import('../components/Hotels/EditHotel'),
+        props: true,
+    },
 ];
 
 export const hotelRoutes = routes.map(route => {

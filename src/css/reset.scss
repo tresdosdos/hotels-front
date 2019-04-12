@@ -63,3 +63,15 @@ a {
     }
   }
 }
+
+.picture-preview, .picture-inner {
+  z-index: 1 !important;
+}
+
+.v-content {
+  height: calc(100vh - 80px);
+
+  .container {
+    overflow-y: auto;
+  }
+}
