@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'development') {
     };
 } else {
     environment = {
-        baseUrl: '',
+        baseUrl: 'https://hotels-back.herokuapp.com',
         clientUrl: '',
     };
 }

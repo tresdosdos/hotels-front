@@ -5,10 +5,12 @@
   "scripts": {
     "start": "vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start:prod": "node server.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "type-comparator": "^0.2.7",
