@@ -9,6 +9,7 @@
     "start:prod": "node server.js"
   },
   "dependencies": {
+    "@vue/babel-preset-app": "^3.6.0",
     "axios": "^0.18.0",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
