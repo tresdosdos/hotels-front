@@ -27,11 +27,23 @@
             <div class="h-pickers">
                 <div class="h-picker">
                     <p class="h-picker-title">Start date</p>
-                    <v-date-picker v-model="startDate" :landscape="false" :reactive="false" width="250px"></v-date-picker>
+                    <v-date-picker
+                            v-model="startDate"
+                            :landscape="false"
+                            :reactive="false"
+                            width="250px"
+                            :allowed-dates="allowedDates"
+                    ></v-date-picker>
                 </div>
                 <div class="h-picker">
                     <p class="h-picker-title">End date</p>
-                    <v-date-picker v-model="endDate" :landscape="false" :reactive="false" width="250px"></v-date-picker>
+                    <v-date-picker
+                            v-model="endDate"
+                            :landscape="false"
+                            :reactive="false"
+                            width="250px"
+                            :allowed-dates="allowedDates"
+                    ></v-date-picker>
                 </div>
             </div>
 

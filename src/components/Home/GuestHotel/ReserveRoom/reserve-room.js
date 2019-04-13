@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import moment from 'moment';
 import { mapState } from 'vuex';
 import { validationMixin } from 'vuelidate';
 import { cmp } from 'type-comparator';
@@ -12,17 +13,15 @@ export default {
             hotel: state => state.hotel.currentHotel,
         }),
         roomPlaces() {
-            const roomPlaces = this.hotel.rooms
-                .filter(room => !room.users.length)
-                .map(room => room.numberOfPlaces);
+            const roomPlaces = this.hotel.rooms.map(
+                room => room.numberOfPlaces
+            );
 
             return _.uniq(roomPlaces);
         },
         roomNumbers() {
             const filteredRooms = this.hotel.rooms.filter(
-                room =>
-                    this.numberOfPlaces === room.numberOfPlaces &&
-                    !room.users.length
+                room => this.numberOfPlaces === room.numberOfPlaces
             );
 
             filteredRooms.sort(
@@ -87,6 +86,26 @@ export default {
         endDate: undefined,
     }),
     methods: {
+        allowedDates(date) {
+            const room = this.hotel.rooms.find(
+                room => room.number === this.number
+            );
+
+            if (!room || !room.users || !room.users.length) {
+                return true;
+            }
+
+            return _.every(
+                room.users,
+                user =>
+                    !(
+                        moment(date).format('YYYY/MM/DD') >=
+                            moment(user.Rent.startDate).format('YYYY/MM/DD') &&
+                        moment(date).format('YYYY/MM/DD') <=
+                            moment(user.Rent.endDate).format('YYYY/MM/DD')
+                    )
+            );
+        },
         async submit() {
             const room = this.hotel.rooms.find(
                 room => room.number === this.number
