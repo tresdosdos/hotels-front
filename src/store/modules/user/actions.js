@@ -1,5 +1,5 @@
 import { userActions, userMutations } from './constants';
-import { HttpService } from '../../../services/http';
+import { HttpService } from '../../../services/http.service';
 import { userService } from '../../../services/user.service';
 import { authService } from '../../../services/auth.service';
 import { snackbarActions } from '../snackbar/constants';

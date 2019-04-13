@@ -1,6 +1,6 @@
 import { validationMixin } from 'vuelidate';
 import { minLength, required } from 'vuelidate/lib/validators';
-import { HttpService } from '../../../services/http';
+import { HttpService } from '../../../services/http.service';
 import { userActions } from '../../../store/modules/user/constants';
 import { snackbarActions } from '../../../store/modules/snackbar/constants';
 import { SNACKBAR_COLORS } from '../../../store/modules/snackbar/snackbar-options';

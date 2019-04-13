@@ -1,6 +1,32 @@
 <section class="h-home">
-    <label>
-        qwe
-        <input/>
-    </label>
+    <h1 class="h-home-title">Hotels.com</h1>
+    <v-text-field
+            min="1"
+            max="9"
+            type="number"
+            v-model="numberOfPlaces"
+            :error-messages="numberOfPlacesErrors"
+            label="Number of places"
+            @keydown.enter="submit"
+            @blur="$v.numberOfPlaces.$touch()"
+    ></v-text-field>
+    <v-text-field
+            min="1"
+            type="number"
+            v-model="floor"
+            :error-messages="floorErrors"
+            label="Room floor"
+            @keydown.enter="submit"
+            @blur="$v.floor.$touch()"
+    ></v-text-field>
+    <v-text-field
+            min="0"
+            type="number"
+            v-model="cost"
+            :error-messages="costErrors"
+            label="Cost per day"
+            @keydown.enter="submit"
+            @blur="$v.cost.$touch()"
+    ></v-text-field>
+    <v-btn class="info" @click="submit">Find my apartments!</v-btn>
 </section>

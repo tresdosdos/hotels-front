@@ -62,4 +62,7 @@ export default {
     async [hotelActions.DELETE_ROOM](store, id) {
         return await hotelService.deleteRoom(id);
     },
+    async [hotelActions.CREATE_RENT](store, rent) {
+        return await hotelService.createRent(rent);
+    },
 };

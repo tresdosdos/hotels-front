@@ -1,0 +1,11 @@
+.h-reserve-room {
+  .h-pickers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    .h-picker {
+      margin: 5px;
+    }
+  }
+}

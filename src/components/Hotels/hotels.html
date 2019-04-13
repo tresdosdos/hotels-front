@@ -1,4 +1,4 @@
 <section class="h-hotels">
     <h-create-hotel></h-create-hotel>
-    <h-hotel v-for="hotel in userHotels" :key="hotel.id" :hotel="hotel"></h-hotel>
+    <h-hotel v-for="hotel in userHotels" :key="hotel.id" :hotel="hotel" :link="'/hotel/edit/' + hotel.id"></h-hotel>
 </section>

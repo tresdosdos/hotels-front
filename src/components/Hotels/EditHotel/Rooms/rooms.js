@@ -24,9 +24,9 @@ export default {
                 return acc;
             }, []);
 
-            orderedRooms.forEach(rooms => rooms.sort((room1, room2) => +room1.number - +room2.number));
-
-            console.log(orderedRooms);
+            orderedRooms.forEach(rooms =>
+                rooms.sort((room1, room2) => +room1.number - +room2.number)
+            );
 
             return orderedRooms;
         },

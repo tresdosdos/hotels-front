@@ -34,6 +34,8 @@ import {
     VDialog,
     VCardText,
     VMenu,
+    VSelect,
+    VDatePicker,
 } from 'vuetify/lib';
 
 export default {
@@ -72,4 +74,6 @@ export default {
     VDialog,
     VCardText,
     VMenu,
+    VSelect,
+    VDatePicker,
 };

@@ -31,13 +31,17 @@ export default {
                 required: true,
             },
         },
+        link: {
+            type: String,
+            required: true,
+        },
     },
     computed: {
         ...mapGetters('user', {
             userId: 'userId',
         }),
-        link: function() {
-            return `/hotel/edit/${this.hotel.id}`;
+        isAdmin() {
+            return this.hotel.userId === this.userId;
         },
     },
     data: () => ({

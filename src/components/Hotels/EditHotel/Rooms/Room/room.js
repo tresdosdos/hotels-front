@@ -57,7 +57,7 @@ export default {
     },
     methods: {
         formatDate(date) {
-            return moment(date).format('DD/MM/YYYY HH:MM');
+            return moment(date).format('DD/MM/YYYY');
         },
         async deleteRoom() {
             await this.$store.dispatch(

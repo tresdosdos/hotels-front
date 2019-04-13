@@ -1,0 +1,24 @@
+<section class="h-guest-hotel">
+    <div class="h-field">
+        <label class="h-field-title">Name:</label>
+        <p class="h-field-title">{{hotel.name}}</p>
+    </div>
+    <div class="h-field">
+        <label class="h-field-title">City:</label>
+        <p class="h-field-title">{{hotel.city}}</p>
+    </div>
+    <div class="h-field">
+        <label class="h-field-title">Address:</label>
+        <p class="h-field-title">{{hotel.address}}</p>
+    </div>
+    <v-carousel hide-delimiters v-if="hotel.images.length" key="images-carousel" height="200px">
+        <v-carousel-item
+                v-for="image in hotel.images"
+                :key="image.id"
+                :src="image.url"
+        ></v-carousel-item>
+    </v-carousel>
+    <div class="h-reserve-container" v-if="isAuthorized">
+        <h-reserve-room></h-reserve-room>
+    </div>
+</section>

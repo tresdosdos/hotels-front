@@ -1,4 +1,4 @@
-import { HttpService } from '../../../services/http';
+import { HttpService } from '../../../services/http.service';
 import { userActions } from '../../../store/modules/user/constants';
 
 export default {

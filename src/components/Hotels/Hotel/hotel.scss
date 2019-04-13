@@ -1,6 +1,9 @@
 @import "../../../css/colors";
 
 .h-card-actions {
+  justify-content: space-evenly;
+  width: 100%;
+
   a {
     color: inherit;
   }

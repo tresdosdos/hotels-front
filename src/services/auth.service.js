@@ -1,4 +1,4 @@
-import { HttpService } from './http';
+import { HttpService } from './http.service';
 import { environment } from '../../env';
 
 const signIn = function(user) {

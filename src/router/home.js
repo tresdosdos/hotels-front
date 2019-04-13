@@ -7,6 +7,22 @@ const routes = [
         name: 'Home',
         component: Home,
     },
+    {
+        path: '/hotel/:id',
+        name: 'Hotel',
+        component: () => import('../components/Home/GuestHotel'),
+        props: true,
+    },
+    {
+        path: '/hotels/find',
+        name: 'Find hotel',
+        component: () => import('../components/Home/HotelsFind'),
+        props: route => ({
+            cost: route.query.cost,
+            numberOfPlaces: route.query.numberOfPlaces,
+            floor: route.query.floor,
+        }),
+    },
 ];
 
 export const homeRoutes = routes.map(route => {

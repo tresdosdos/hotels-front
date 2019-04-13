@@ -1,0 +1,46 @@
+<v-dialog v-model="dialog" max-width="600px">
+    <template v-slot:activator="{ on }">
+        <v-btn color="primary" dark v-on="on">Reserve apartments</v-btn>
+    </template>
+    <v-card>
+        <v-card-title>
+            <span class="headline">Apartments reservation</span>
+        </v-card-title>
+        <v-card-text class="h-reserve-room">
+            <v-select
+                    required
+                    :items="roomPlaces"
+                    label="Number of places"
+                    v-model="numberOfPlaces"
+                    :error-messages="numberOfPlacesErrors"
+                    no-data-text="Sorry, there isn't any available room"
+            ></v-select>
+            <v-select
+                    required
+                    :disabled="!numberOfPlaces"
+                    :items="roomNumbers"
+                    label="Room number"
+                    v-model="number"
+                    :error-messages="numberErrors"
+                    no-data-text="Sorry, there isn't any available room number"
+            ></v-select>
+            <div class="h-pickers">
+                <div class="h-picker">
+                    <p class="h-picker-title">Start date</p>
+                    <v-date-picker v-model="startDate" :landscape="false" :reactive="false" width="250px"></v-date-picker>
+                </div>
+                <div class="h-picker">
+                    <p class="h-picker-title">End date</p>
+                    <v-date-picker v-model="endDate" :landscape="false" :reactive="false" width="250px"></v-date-picker>
+                </div>
+            </div>
+
+            <h2 v-if="finalCost">Cost: {{finalCost}}$</h2>
+        </v-card-text>
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
+            <v-btn color="blue darken-1" flat @click="submit">Rent</v-btn>
+        </v-card-actions>
+    </v-card>
+</v-dialog>

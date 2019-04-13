@@ -1,4 +1,4 @@
-import { HttpService } from './http';
+import { HttpService } from './http.service';
 import { environment } from '../../env';
 
 const getByToken = function() {
@@ -8,7 +8,7 @@ const getByToken = function() {
 const uploadAvatar = function(inputFile) {
     const file = new FormData();
     file.append('file', inputFile);
-    return HttpService.post(`${environment.baseUrl}/hotel/avatar`, file, {
+    return HttpService.post(`${environment.baseUrl}/user/avatar`, file, {
         headers: {
             'content-type': 'multipart/form-data',
         },

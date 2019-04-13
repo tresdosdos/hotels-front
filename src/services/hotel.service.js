@@ -1,4 +1,4 @@
-import { HttpService } from './http';
+import { HttpService } from './http.service';
 import { environment } from '../../env';
 
 const getUserHotels = userId => {
@@ -44,6 +44,10 @@ const deleteRoom = id => {
     return HttpService.delete(`${environment.baseUrl}/room/${id}`);
 };
 
+const createRent = rent => {
+    return HttpService.post(`${environment.baseUrl}/rent`, rent);
+};
+
 export const hotelService = {
     getUserHotels,
     getById,
@@ -53,4 +57,5 @@ export const hotelService = {
     updateHotel,
     uploadPhoto,
     deleteRoom,
+    createRent,
 };

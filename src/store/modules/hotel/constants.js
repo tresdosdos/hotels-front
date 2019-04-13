@@ -14,4 +14,5 @@ export const hotelActions = {
     ADD_ROOM: 'ADD_ROOM',
     SET_CURRENT_HOTEL: 'SET_CURRENT_HOTEL',
     UPLOAD_PHOTO: 'UPLOAD_PHOTO',
+    CREATE_RENT: 'CREATE_RENT',
 };

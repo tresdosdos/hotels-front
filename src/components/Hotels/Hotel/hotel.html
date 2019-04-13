@@ -18,12 +18,13 @@
 
     <v-layout justify-center align-center>
         <v-card-actions class="h-card-actions">
-            <v-btn flat class="info">
-                <router-link :to="link">
-                    Edit
-                </router-link>
-            </v-btn>
-            <v-btn flat class="error" @click="deleteHotel">Delete</v-btn>
+            <router-link :to="link">
+                <v-btn flat class="info">
+                    <template v-if="isAdmin">Edit</template>
+                    <template v-else>View</template>
+                </v-btn>
+            </router-link>
+            <v-btn v-if="isAdmin" flat class="error" @click="deleteHotel">Delete</v-btn>
         </v-card-actions>
     </v-layout>
 </v-card>
