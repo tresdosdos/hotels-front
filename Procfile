@@ -1,1 +1,1 @@
-web: npm i && npm i -g @vue/cli-service && npm run build && npm run start:prod
+web: npm run build && npm run start:prod
