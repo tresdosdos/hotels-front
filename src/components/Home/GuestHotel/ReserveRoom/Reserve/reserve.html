@@ -1,0 +1,41 @@
+<v-dialog v-model="dialog" max-width="600px">
+    <template v-slot:activator="{ on }">
+        <v-btn color="blue darken-1" flat v-on="on" :disabled="!room.roomId">Reserve</v-btn>
+    </template>
+    <v-card>
+        <v-card-title>
+            <span class="headline">Personal info for reservation</span>
+        </v-card-title>
+        <v-card-text class="h-reserve-room">
+            <v-text-field
+                    type="text"
+                    v-model="passport"
+                    :error-messages="passportErrors"
+                    label="Passport number"
+                    @keydown.enter="submit"
+                    @blur="$v.passport.$touch()"
+            ></v-text-field>
+            <v-text-field
+                    type="text"
+                    v-model="surname"
+                    :error-messages="surnameErrors"
+                    label="Surname"
+                    @keydown.enter="submit"
+                    @blur="$v.surname.$touch()"
+            ></v-text-field>
+            <v-text-field
+                    type="text"
+                    v-model="name"
+                    :error-messages="nameErrors"
+                    label="Name"
+                    @keydown.enter="submit"
+                    @blur="$v.name.$touch()"
+            ></v-text-field>
+        </v-card-text>
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
+            <v-btn color="blue darken-1" flat @click="submit">Reserve</v-btn>
+        </v-card-actions>
+    </v-card>
+</v-dialog>

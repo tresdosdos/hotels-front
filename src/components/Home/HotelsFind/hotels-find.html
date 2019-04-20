@@ -1,6 +1,6 @@
 <section class="h-hotels-find">
-    <template v-if="foundHotels.length">
-        <h-hotel v-for="hotel of foundHotels" :hotel="hotel" :link="'/hotel/' + hotel.id" key="hotel.id"></h-hotel>
+    <template v-if="foundHotels.length" class="h-hotel">
+        <h-hotel v-for="hotel of foundHotels" :hotel="hotel" :link="'/hotel/' + hotel.id" :key="hotel.id"></h-hotel>
     </template>
     <div v-else>Sorry, we don't have such available hotels right now</div>
 </section>

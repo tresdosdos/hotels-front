@@ -17,6 +17,10 @@ export default {
             type: String,
             required: false,
         },
+        city: {
+            type: String,
+            required: false,
+        },
     },
     components: {
         'h-hotel': Hotel,
@@ -31,6 +35,7 @@ export default {
             cost: this.cost,
             floor: this.floor,
             numberOfPlaces: this.numberOfPlaces,
+            city: this.city,
         });
     },
 };

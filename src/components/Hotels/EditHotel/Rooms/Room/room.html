@@ -14,6 +14,12 @@
         <v-list-tile>
             <v-list-tile-title>Room floor: {{room.floor}}</v-list-tile-title>
         </v-list-tile>
+        <v-list-tile>
+            <v-list-tile-title>Number of places: {{room.numberOfPlaces}}</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile v-if="status">
+            <v-list-tile-title>Status: {{status}}</v-list-tile-title>
+        </v-list-tile>
         <template v-if="room.users && dates">
             <v-list-tile>
                 <v-list-tile-title>Start date: {{formatDate(dates.startDate)}}</v-list-tile-title>

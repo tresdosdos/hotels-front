@@ -19,8 +19,13 @@ const deleteAvatar = function(id) {
     return HttpService.post(`${environment.baseUrl}/user/avatar`, { id });
 };
 
+const getTickets = () => {
+    return HttpService.get(`${environment.baseUrl}/rent/user`);
+};
+
 export const userService = {
     getByToken,
     uploadAvatar,
     deleteAvatar,
+    getTickets,
 };

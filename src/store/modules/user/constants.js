@@ -11,4 +11,5 @@ export const userActions = {
     SIGN_UP: 'SIGN_UP',
     UPLOAD_AVATAR: 'UPLOAD_AVATAR',
     DELETE_AVATAR: 'DELETE_AVATAR',
+    GET_TICKETS: 'GET_TICKETS',
 };

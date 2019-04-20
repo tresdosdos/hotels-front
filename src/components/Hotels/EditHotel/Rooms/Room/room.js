@@ -36,15 +36,35 @@ export default {
                 endDate: sortedUsers[0].Rent.endDate,
             };
         },
+        status() {
+            if (!this.room.users || !this.busy) {
+                return '';
+            }
+
+            const comparator = cmp()
+                .map(user => user.Rent)
+                .use([
+                    cmp()
+                        .map(rent => rent.startDate)
+                        .desc(),
+                    cmp()
+                        .map(rent => rent.endDate)
+                        .asc(),
+                ]);
+            const sortedUsers = _.clone(this.room.users);
+            sortedUsers.sort(comparator);
+
+            return sortedUsers[0].Rent.status;
+        },
         busy() {
             return (
                 this.room.users &&
                 _.some(this.room.users, user => {
                     return (
                         user.Rent &&
-                        new Date().getTime() >=
-                            Date.parse(user.Rent.startDate) &&
-                        new Date().getTime() <= Date.parse(user.Rent.endDate)
+                        moment(Date.now()).format('YYYY-DD-MM') >=
+                        moment(user.Rent.startDate).format('YYYY-DD-MM') &&
+                        moment(Date.now()).format('YYYY-DD-MM') <= moment(user.Rent.endDate).format('YYYY-DD-MM')
                     );
                 }) &&
                 'busy'

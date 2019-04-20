@@ -21,6 +21,7 @@ const routes = [
             cost: route.query.cost,
             numberOfPlaces: route.query.numberOfPlaces,
             floor: route.query.floor,
+            city: route.query.city,
         }),
     },
 ];

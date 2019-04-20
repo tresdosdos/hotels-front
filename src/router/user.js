@@ -16,6 +16,11 @@ const routes = [
         name: 'Reset avatar',
         component: () => import('../components/User/ResetAvatar'),
     },
+    {
+        path: '/rents',
+        name: 'Reservations',
+        component: () => import('../components/User/Reservations'),
+    }
 ];
 
 export const userRoutes = routes.map(route => {

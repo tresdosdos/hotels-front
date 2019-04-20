@@ -36,6 +36,7 @@ import {
     VMenu,
     VSelect,
     VDatePicker,
+    VRating,
 } from 'vuetify/lib';
 
 export default {
@@ -76,4 +77,5 @@ export default {
     VMenu,
     VSelect,
     VDatePicker,
+    VRating,
 };

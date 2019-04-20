@@ -4,10 +4,15 @@ import { mapState } from 'vuex';
 import { validationMixin } from 'vuelidate';
 import { cmp } from 'type-comparator';
 import { required } from 'vuelidate/lib/validators';
-import { hotelActions } from '../../../../store/modules/hotel/constants';
+import Rent from './Rent';
+import Reserve from './Reserve';
 
 export default {
     name: 'ReserveRoom',
+    components: {
+        'h-reserve': Reserve,
+        'h-rent': Rent,
+    },
     computed: {
         ...mapState({
             hotel: state => state.hotel.currentHotel,
@@ -70,6 +75,21 @@ export default {
 
             return errors;
         },
+        room() {
+            const room = this.hotel.rooms.find(
+                room => room.number === this.number
+            );
+
+            if (!room) {
+                return {};
+            }
+
+            return {
+                roomId: room.id,
+                startDate: this.startDate,
+                endDate: this.endDate,
+            };
+        }
     },
     mixins: [validationMixin],
     validations: {
@@ -105,19 +125,6 @@ export default {
                             moment(user.Rent.endDate).format('YYYY/MM/DD')
                     )
             );
-        },
-        async submit() {
-            const room = this.hotel.rooms.find(
-                room => room.number === this.number
-            );
-
-            await this.$store.dispatch(`hotel/${hotelActions.CREATE_RENT}`, {
-                roomId: room.id,
-                startDate: this.startDate,
-                endDate: this.endDate,
-            });
-
-            this.dialog = false;
         },
     },
 };

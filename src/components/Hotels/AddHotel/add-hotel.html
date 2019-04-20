@@ -26,6 +26,13 @@
                 @keydown.enter="submit"
                 @blur="$v.address.$touch()"
         ></v-text-field>
+        <v-rating
+                v-model="rating"
+                :error-messages="ratingErrors"
+                label="Rating"
+                @keydown.enter="submit"
+                @blur="$v.address.$touch()"
+        ></v-rating>
         <v-btn @click="submit" color="info">Create hotel</v-btn>
     </form>
 </section>

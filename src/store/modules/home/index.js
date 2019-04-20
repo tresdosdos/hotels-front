@@ -4,6 +4,7 @@ import getters from './getters';
 
 const state = {
     rooms: [],
+    cities: [],
 };
 
 export default {

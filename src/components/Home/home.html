@@ -6,7 +6,7 @@
             type="number"
             v-model="numberOfPlaces"
             :error-messages="numberOfPlacesErrors"
-            label="Number of places"
+            label="Max number of places"
             @keydown.enter="submit"
             @blur="$v.numberOfPlaces.$touch()"
     ></v-text-field>
@@ -24,9 +24,18 @@
             type="number"
             v-model="cost"
             :error-messages="costErrors"
-            label="Cost per day"
+            label="Max cost per day"
             @keydown.enter="submit"
             @blur="$v.cost.$touch()"
     ></v-text-field>
+    <v-select
+            required
+            :items="cities"
+            label="City"
+            v-model="city"
+            @keydown.enter="submit"
+            @blur="$v.city.$touch()"
+            no-data-text="Sorry, there isn't any hotel yet"
+    ></v-select>
     <v-btn class="info" @click="submit">Find my apartments!</v-btn>
 </section>

@@ -1,5 +1,7 @@
+import { mapState } from 'vuex';
 import { validationMixin } from 'vuelidate';
 import { maxValue, minValue } from 'vuelidate/src/validators';
+import { homeActions } from '../../store/modules/home/constants';
 
 export default {
     name: 'Home',
@@ -13,6 +15,9 @@ export default {
         cost: { minValue: minValue(0) },
     },
     computed: {
+        ...mapState({
+            cities: state => state.home.cities,
+        }),
         floorErrors() {
             const errors = [];
 
@@ -54,15 +59,30 @@ export default {
         floor: undefined,
         numberOfPlaces: undefined,
         cost: undefined,
+        city: undefined,
     }),
+    mounted() {
+        this.$store.dispatch(`home/${homeActions.GET_CITIES}`);
+    },
     methods: {
         submit() {
+            this.$v.$touch();
+
+            if (
+                this.floorErrors.length ||
+                this.numberOfPlacesErrors.length ||
+                this.costErrors.length
+            ) {
+                return;
+            }
+
             this.$router.push({
                 path: '/hotels/find',
                 query: {
                     floor: this.floor,
                     numberOfPlaces: this.numberOfPlaces,
                     cost: this.cost,
+                    city: this.city,
                 },
             });
         },

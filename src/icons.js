@@ -15,4 +15,5 @@ export const ICONS = {
     add: 'mdi-plus',
     question: 'mdi-help',
     room: 'mdi-alpha-r-box',
+    ticket: 'mdi-ticket',
 };

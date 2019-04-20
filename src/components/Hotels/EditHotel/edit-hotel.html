@@ -7,15 +7,11 @@
         <h2>Hotel address</h2>
         <div class="h-input-address">{{hotel.address}}</div>
     </div>
+    <div class="h-hotel-title" v-if="hotel.rating">
+        <v-rating :value="hotel.rating"></v-rating>
+    </div>
     <h-add-room :hotelId="hotel.id" @onRoomAddSuccess="onRoomAddSuccess"></h-add-room>
     <div class="h-hotel-carousel">
-        <v-carousel hide-delimiters v-if="hotel.images.length" key="images-carousel" height="200px">
-            <v-carousel-item
-                    v-for="image in hotel.images"
-                    :key="image.id"
-                    :src="image.url"
-            ></v-carousel-item>
-        </v-carousel>
         <picture-input
                 @change="uploadPhoto"
                 ref="pictureInput"

@@ -11,6 +11,10 @@
         <label class="h-field-title">Address:</label>
         <p class="h-field-title">{{hotel.address}}</p>
     </div>
+    <div class="h-field">
+        <label class="h-field-title">Rating:</label>
+        <v-rating :value="hotel.rating" :readonly="true"></v-rating>
+    </div>
     <v-carousel hide-delimiters v-if="hotel.images.length" key="images-carousel" height="200px">
         <v-carousel-item
                 v-for="image in hotel.images"
@@ -20,5 +24,8 @@
     </v-carousel>
     <div class="h-reserve-container" v-if="isAuthorized">
         <h-reserve-room></h-reserve-room>
+    </div>
+    <div v-else>
+        <h2>Please, sign in to reserve apartments</h2>
     </div>
 </section>

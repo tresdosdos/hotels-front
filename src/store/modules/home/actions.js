@@ -7,4 +7,9 @@ export default {
 
         commit(homeMutations.SET_FOUND_HOTELS, res.data);
     },
+    async [homeActions.GET_CITIES]({ commit }) {
+        const res = await homeService.getCities();
+
+        commit(homeMutations.SET_CITIES, res.data);
+    },
 };

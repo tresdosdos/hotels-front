@@ -51,8 +51,8 @@
         </v-card-text>
         <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
-            <v-btn color="blue darken-1" flat @click="submit">Rent</v-btn>
+            <h-reserve :room="room"></h-reserve>
+            <h-rent :room="room"></h-rent>
         </v-card-actions>
     </v-card>
 </v-dialog>

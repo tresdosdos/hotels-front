@@ -9,6 +9,7 @@ export default {
         name: { required, minLength: minLength(4) },
         address: { required },
         city: { required },
+        rating: { required },
     },
     computed: {
         nameErrors() {
@@ -46,11 +47,23 @@ export default {
 
             return errors;
         },
+        ratingErrors() {
+            const errors = [];
+
+            if (!this.$v.city.$dirty) {
+                return errors;
+            }
+
+            !this.$v.city.required && errors.push('City is required');
+
+            return errors;
+        },
     },
     data: () => ({
         name: '',
         address: '',
         city: '',
+        rating: undefined,
     }),
     methods: {
         async submit() {
@@ -68,6 +81,7 @@ export default {
                 name: this.name,
                 address: this.address,
                 city: this.city,
+                rating: this.rating,
             });
             this.$router.push('/hotels');
         },

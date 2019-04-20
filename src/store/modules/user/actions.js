@@ -68,4 +68,9 @@ export default {
 
         commit(userMutations.SET_DATA, res.data);
     },
+    async [userActions.GET_TICKETS]() {
+        const res = await userService.getTickets();
+
+        return res.data;
+    },
 };
