@@ -35,6 +35,10 @@ export default {
             type: String,
             required: true,
         },
+        fromAdminPanel: {
+            type: Boolean,
+            required: true,
+        },
     },
     computed: {
         ...mapGetters('user', {

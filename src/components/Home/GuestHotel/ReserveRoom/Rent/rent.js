@@ -47,6 +47,40 @@ export default {
 
             return errors;
         },
+        passportErrors() {
+            const errors = [];
+
+            if (!this.$v.passport.$dirty) {
+                return errors;
+            }
+
+            !this.$v.passport.required &&
+                errors.push('Passport number is required');
+
+            return errors;
+        },
+        surnameErrors() {
+            const errors = [];
+
+            if (!this.$v.surname.$dirty) {
+                return errors;
+            }
+
+            !this.$v.surname.required && errors.push('Surname is required');
+
+            return errors;
+        },
+        nameErrors() {
+            const errors = [];
+
+            if (!this.$v.name.$dirty) {
+                return errors;
+            }
+
+            !this.$v.name.required && errors.push('Name is required');
+
+            return errors;
+        },
     },
     mixins: [validationMixin],
     validations: {
@@ -57,12 +91,18 @@ export default {
         },
         date: { required, minLength: minLength(4), maxLength: maxLength(4) },
         cvv: { required, minLength: minLength(3), maxLength: maxLength(3) },
+        passport: { required },
+        surname: { required },
+        name: { required },
     },
     data: () => ({
         dialog: null,
         cardNumber: undefined,
         date: undefined,
         cvv: undefined,
+        passport: undefined,
+        surname: undefined,
+        name: undefined,
     }),
     methods: {
         async submit() {
@@ -71,15 +111,65 @@ export default {
             if (
                 this.cardNumberErrors.length ||
                 this.dateErrors.length ||
-                this.cvvErrors.length
+                this.cvvErrors.length ||
+                this.passportErrors.length ||
+                this.surnameErrors.length ||
+                this.nameErrors.length
             ) {
                 return;
             }
 
-            await this.$store.dispatch(
-                `hotel/${hotelActions.CREATE_RENT}`,
-                Object.assign(this.room, { status: 'rent' })
+            function buildSupportedPaymentMethodData() {
+                // Example supported payment methods:
+                return [
+                    {
+                        supportedMethods: 'basic-card',
+                        data: {
+                            supportedNetworks: ['visa', 'mastercard'],
+                            supportedTypes: ['debit', 'credit'],
+                        },
+                    },
+                ];
+            }
+
+            function buildShoppingCartDetails() {
+                // Hardcoded for demo purposes:
+                return {
+                    id: 'order-123',
+                    displayItems: [
+                        {
+                            label: 'Example item',
+                            amount: { currency: 'USD', value: '1.00' },
+                        },
+                    ],
+                    total: {
+                        label: 'Total',
+                        amount: { currency: 'USD', value: '1.00' },
+                    },
+                };
+            }
+
+            const request = new PaymentRequest(
+                buildSupportedPaymentMethodData(),
+                buildShoppingCartDetails()
             );
+
+            request.show().then(function(paymentResponse) {
+                paymentResponse
+                    .complete('success')
+                    .then(function() {
+                        console.log('success');
+                    })
+                    .catch(() => console.log('fail'));
+            });
+
+            await this.$store.dispatch(`hotel/${hotelActions.CREATE_RENT}`, {
+                ...this.room,
+                status: 'rent',
+                passportNumber: this.passport,
+                surname: this.surname,
+                name: this.name,
+            });
 
             this.dialog = false;
         },

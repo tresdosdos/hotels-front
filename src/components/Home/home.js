@@ -13,6 +13,7 @@ export default {
             maxValue: maxValue(9),
         },
         cost: { minValue: minValue(0) },
+        city: {},
     },
     computed: {
         ...mapState({
@@ -60,6 +61,7 @@ export default {
         numberOfPlaces: undefined,
         cost: undefined,
         city: undefined,
+        rating: undefined,
     }),
     mounted() {
         this.$store.dispatch(`home/${homeActions.GET_CITIES}`);
@@ -83,6 +85,7 @@ export default {
                     numberOfPlaces: this.numberOfPlaces,
                     cost: this.cost,
                     city: this.city,
+                    rating: this.rating,
                 },
             });
         },

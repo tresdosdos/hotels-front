@@ -56,6 +56,30 @@ export default {
 
             return sortedUsers[0].Rent.status;
         },
+        userCreds() {
+            if (!this.room.users || !this.busy) {
+                return {};
+            }
+
+            const comparator = cmp()
+                .map(user => user.Rent)
+                .use([
+                    cmp()
+                        .map(rent => rent.startDate)
+                        .desc(),
+                    cmp()
+                        .map(rent => rent.endDate)
+                        .asc(),
+                ]);
+            const sortedUsers = _.clone(this.room.users);
+            sortedUsers.sort(comparator);
+
+            return {
+                surname: sortedUsers[0].Rent.surname,
+                name: sortedUsers[0].Rent.name,
+                passportNumber: sortedUsers[0].Rent.passportNumber,
+            };
+        },
         busy() {
             return (
                 this.room.users &&

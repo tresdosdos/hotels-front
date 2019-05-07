@@ -20,7 +20,7 @@
         <v-card-actions class="h-card-actions">
             <router-link :to="link">
                 <v-btn flat class="info">
-                    <template v-if="isAdmin">Edit</template>
+                    <template v-if="isAdmin && fromAdminPanel">Edit</template>
                     <template v-else>View</template>
                 </v-btn>
             </router-link>

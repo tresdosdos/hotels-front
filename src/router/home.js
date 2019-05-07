@@ -22,6 +22,7 @@ const routes = [
             numberOfPlaces: route.query.numberOfPlaces,
             floor: route.query.floor,
             city: route.query.city,
+            rating: route.query.rating,
         }),
     },
 ];

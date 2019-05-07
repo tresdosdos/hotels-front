@@ -29,7 +29,6 @@
             @blur="$v.cost.$touch()"
     ></v-text-field>
     <v-select
-            required
             :items="cities"
             label="City"
             v-model="city"
@@ -37,5 +36,8 @@
             @blur="$v.city.$touch()"
             no-data-text="Sorry, there isn't any hotel yet"
     ></v-select>
+    <v-rating
+            v-model="rating"
+    ></v-rating>
     <v-btn class="info" @click="submit">Find my apartments!</v-btn>
 </section>

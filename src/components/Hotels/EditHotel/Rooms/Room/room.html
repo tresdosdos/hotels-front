@@ -4,7 +4,7 @@
 >
     <template v-slot:activator="{ on }">
         <section class="h-room" v-on="on">
-            <div :class="busy">{{room.number}}</div>
+            <div :class="status">{{room.number}}</div>
         </section>
     </template>
     <v-list>
@@ -20,6 +20,17 @@
         <v-list-tile v-if="status">
             <v-list-tile-title>Status: {{status}}</v-list-tile-title>
         </v-list-tile>
+        <template v-if="room.users && userCreds">
+            <v-list-tile>
+                <v-list-tile-title>Surname: {{userCreds.surname}}</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile>
+                <v-list-tile-title>Name: {{userCreds.name}}</v-list-tile-title>
+            </v-list-tile>
+            <v-list-tile>
+                <v-list-tile-title>Passport number: {{userCreds.passportNumber}}</v-list-tile-title>
+            </v-list-tile>
+        </template>
         <template v-if="room.users && dates">
             <v-list-tile>
                 <v-list-tile-title>Start date: {{formatDate(dates.startDate)}}</v-list-tile-title>

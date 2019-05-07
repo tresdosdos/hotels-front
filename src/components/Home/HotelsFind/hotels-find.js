@@ -21,6 +21,10 @@ export default {
             type: String,
             required: false,
         },
+        rating: {
+            type: Number | String,
+            required: false,
+        }
     },
     components: {
         'h-hotel': Hotel,
@@ -36,6 +40,7 @@ export default {
             floor: this.floor,
             numberOfPlaces: this.numberOfPlaces,
             city: this.city,
+            rating: this.rating,
         });
     },
 };

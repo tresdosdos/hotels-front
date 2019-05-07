@@ -70,10 +70,13 @@ export default {
                 return;
             }
 
-            await this.$store.dispatch(
-                `hotel/${hotelActions.CREATE_RENT}`,
-                Object.assign(this.room, { status: 'reserve' })
-            );
+            await this.$store.dispatch(`hotel/${hotelActions.CREATE_RENT}`, {
+                ...this.room,
+                status: 'reserve',
+                passportNumber: this.passport,
+                surname: this.surname,
+                name: this.name,
+            });
 
             this.dialog = false;
         },
