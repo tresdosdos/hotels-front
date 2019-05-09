@@ -58,7 +58,7 @@ export default {
         },
         userCreds() {
             if (!this.room.users || !this.busy) {
-                return {};
+                return false;
             }
 
             const comparator = cmp()
