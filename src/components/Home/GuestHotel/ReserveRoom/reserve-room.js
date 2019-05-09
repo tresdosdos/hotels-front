@@ -31,7 +31,7 @@ export default {
 
             filteredRooms.sort(
                 cmp()
-                    .map(room => room.number)
+                    .map(room => +room.number)
                     .asc()
             );
             return filteredRooms.map(room => room.number);
